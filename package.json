@@ -1,7 +1,7 @@
 {
-  "name": "src",
+  "name": "motionface-popup-book",
   "version": "1.0.0",
-  "description": "My Remotion video",
+  "description": "立体书：约束越多，作品越能脱颖而出 — Remotion 可编辑复刻",
   "repository": {},
   "license": "UNLICENSED",
   "engines": {
@@ -9,6 +9,7 @@
   },
   "private": true,
   "dependencies": {
+    "@fontsource/noto-serif-sc": "^5.3.1",
     "@remotion/cli": "4.0.537",
     "react": "19.2.3",
     "react-dom": "19.2.3",
@@ -23,10 +24,13 @@
     "typescript": "5.9.3"
   },
   "scripts": {
-    "dev": "remotion studio",
+    "dev": "remotion studio --no-open",
     "build": "remotion bundle",
     "upgrade": "remotion upgrade",
-    "lint": "eslint src && tsc"
+    "lint": "eslint src && tsc",
+    "render": "remotion render src/index.ts PopupBook ../outputs/popup-book.mp4 --codec=h264 --pixel-format=yuv420p --color-space=bt709 --concurrency=4",
+    "still": "remotion still src/index.ts PopupBook ../outputs/poster.png --frame=690",
+    "check": "eslint src && tsc --noEmit"
   },
   "allowScripts": {
     "esbuild": false
